@@ -1,0 +1,29 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (gtest.vcxproj, test_utmatrix.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+cl : командная строка warning D9035: использование параметра "Gm" нежелательно, он будет удален в следующих выпусках
+  sample_matrix.cpp
+D:\MyCpp\Lobach\mp2-lab2-matrix\include\utmatrix.h(70,26): warning C4018: <: несоответствие типов со знаком и без знака
+D:\MyCpp\Lobach\mp2-lab2-matrix\include\utmatrix.h(64): message : во время компиляции функции-члена класс шаблон "TVector<TVector<ValType>>::TVector(int,int)"
+          with
+          [
+              ValType=int
+          ]
+D:\MyCpp\Lobach\mp2-lab2-matrix\include\utmatrix.h(208): message : выполняется компиляция ссылки на экземпляр шаблон функции "TVector<TVector<ValType>>::TVector(int,int)"
+          with
+          [
+              ValType=int
+          ]
+D:\MyCpp\Lobach\mp2-lab2-matrix\include\utmatrix.h(208): message : во время компиляции функции-члена класс шаблон "TMatrix<int>::TMatrix(int)"
+D:\MyCpp\Lobach\mp2-lab2-matrix\samples\sample_matrix.cpp(14): message : выполняется компиляция ссылки на экземпляр шаблон функции "TMatrix<int>::TMatrix(int)"
+D:\MyCpp\Lobach\mp2-lab2-matrix\samples\sample_matrix.cpp(14): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "TMatrix<int>"
+D:\MyCpp\Lobach\mp2-lab2-matrix\include\utmatrix.h(140,22): warning C4018: <: несоответствие типов со знаком и без знака
+D:\MyCpp\Lobach\mp2-lab2-matrix\include\utmatrix.h(130): message : во время компиляции функции-члена класс шаблон "TVector<ValType> &TVector<ValType>::operator =(const TVector<ValType> &)"
+          with
+          [
+              ValType=int
+          ]
+D:\MyCpp\Lobach\mp2-lab2-matrix\include\utmatrix.h(72): message : выполняется компиляция ссылки на экземпляр шаблон функции "TVector<ValType> &TVector<ValType>::operator =(const TVector<ValType> &)"
+          with
+          [
+              ValType=int
+          ]
+D:\MyCpp\Lobach\mp2-lab2-matrix\samples\sample_matrix.cpp : fatal error C1090: Произошел сбой при вызове API PDB, код ошибки "3": D:\MyCpp\Lobach\mp2-lab2-matrix\sln\vc10\Debug\vc142.pdb
