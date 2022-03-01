@@ -140,7 +140,7 @@ TEST(TVector, compare_vector_with_itself_return_true)
 	EXPECT_EQ(true, v == v);
 }
 
-TEST(TVector, vectors_with_different_size_are_not_equal)
+TEST(TVector, vectors_with_different_length_are_not_equal)
 {
 	TVector<int> v1(10), v2(11);
 	for (int i = 0; i < 10; i++)
@@ -188,7 +188,7 @@ TEST(TVector, can_multiply_scalar_by_vector)
 	EXPECT_EQ(a, b * 5);
 }
 
-TEST(TVector, can_add_vectors_with_equal_size)
+TEST(TVector, can_add_vectors_with_equal_size_1)
 {
 	TVector<int> a(10);
 	for (int i = 0; i < a.GetSize(); i++)
@@ -197,12 +197,25 @@ TEST(TVector, can_add_vectors_with_equal_size)
 	}
 	TVector<int> b(a);
 	TVector<int> c(b);
-	for (int i = 0; i < a.GetSize(); i++)
+	for (int i = 0; i < c.GetSize(); i++)
 	{
 		c[i] += a[i];
 	}
 	ASSERT_NO_THROW(a + b);
 	EXPECT_EQ(true, c == a + b);
+}
+
+TEST(TVector, can_add_vectors_with_equal_size_2)
+{
+	TVector<int> a(5, 2);
+	for (int i = 2; i < 2 + a.GetSize(); i++)
+	{
+		a[i] = i;
+	}
+	TVector<int> b(3, 4);
+	TVector<int> c(b);
+	ASSERT_NO_THROW(a + b);
+	EXPECT_EQ(a, a + b);
 }
 
 TEST(TVector, cant_add_vectors_with_not_equal_size)
@@ -215,9 +228,11 @@ TEST(TVector, cant_add_vectors_with_not_equal_size)
 	}
 	b[10] = 1;
 	ASSERT_ANY_THROW(a + b);
+	TVector<int> c(10,1), d(11,1);
+	ASSERT_ANY_THROW(c + d);
 }
 
-TEST(TVector, can_subtract_vectors_with_equal_size)
+TEST(TVector, can_subtract_vectors_with_equal_size_1)
 {
 	TVector<int> a(10);
 	for (int i = 0; i < a.GetSize(); i++)
@@ -226,13 +241,26 @@ TEST(TVector, can_subtract_vectors_with_equal_size)
 	}
 	TVector<int> b(a);
 	TVector<int> c(b);
-	for (int i = 0; i < a.GetSize(); i++)
+	for (int i = 0; i < c.GetSize(); i++)
 	{
 		c[i] -= a[i];
 	}
 	ASSERT_NO_THROW(a - b);
 	EXPECT_EQ(true, c == a - b);
 }
+TEST(TVector, can_subtract_vectors_with_equal_size_2)
+{
+	TVector<int> a(5, 2);
+	for (int i = 2; i < 2 + a.GetSize(); i++)
+	{
+		a[i] = i;
+	}
+	TVector<int> b(3, 4);
+	TVector<int> c(b);
+	ASSERT_NO_THROW(a - b);
+	EXPECT_EQ(a, a - b);
+}
+
 
 TEST(TVector, cant_subtract_vectors_with_not_equal_size)
 {
@@ -244,9 +272,11 @@ TEST(TVector, cant_subtract_vectors_with_not_equal_size)
 	}
 	b[10] = 1;
 	ASSERT_ANY_THROW(a - b);
+	TVector<int> c(10,1), d(11,1);
+	ASSERT_ANY_THROW(c - d);
 }
 
-TEST(TVector, can_multiply_vectors_with_equal_size)
+TEST(TVector, can_multiply_vectors_with_equal_size_1)
 {
 	TVector<int> a(3);
 	for (int i = 0; i < a.GetSize(); i++)
@@ -255,12 +285,28 @@ TEST(TVector, can_multiply_vectors_with_equal_size)
 	}
 	TVector<int> b(a);
 	TVector<int> c(b);
-	for (int i = 0; i < a.GetSize(); i++)
+	for (int i = 0; i < b.GetSize(); i++)
 	{
 		b[i] *= 2;
 	}
 	ASSERT_NO_THROW(a * b);
 	EXPECT_EQ(true, 6 == a * b);
+}
+
+TEST(TVector, can_multiply_vectors_with_equal_size_2)
+{
+	TVector<int> a(3,2);
+	for (int i = 2; i < 2+a.GetSize(); i++)
+	{
+		a[i] = 1;
+	}
+	TVector<int> b(2,3);
+	for (int i = 3; i < 3+b.GetSize(); i++)
+	{
+		b[i] = 2;
+	}
+	ASSERT_NO_THROW(a * b);
+	EXPECT_EQ(true, 4 == a * b);
 }
 
 TEST(TVector, cant_multiply_vectors_with_not_equal_size)
@@ -273,4 +319,6 @@ TEST(TVector, cant_multiply_vectors_with_not_equal_size)
 	}
 	b[10] = 1;
 	ASSERT_ANY_THROW(a * b);
+	TVector<int> c(3,2), d(2,2);
+	ASSERT_ANY_THROW(c * d);
 }
