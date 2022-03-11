@@ -211,3 +211,24 @@ TEST(TMatrix, cant_subtract_matrixes_with_not_equal_size)
 			b[i][j] = 1;
 	ASSERT_ANY_THROW(a - b);
 }
+
+TEST(TMatrix, can_enter_matrix) {
+	TMatrix<int> a(2), b(2);
+	b[0][0] = 2;
+	b[0][1] = 1;
+	b[1][1] = 2;
+	stringstream s("2 1 2");
+	ASSERT_NO_THROW(s >> a);
+	EXPECT_EQ(a,b);
+}
+
+TEST(TMatrix, can_print_matrix) {
+	TMatrix<int> a(2);
+	a[0][0] = 2;
+	a[0][1] = 1;
+	a[1][1] = 2;
+	stringstream s1;
+	string s2 = "2 1 \n0 2 \n";
+	ASSERT_NO_THROW(s1 << a);
+	EXPECT_EQ(s1.str(),s2);
+}

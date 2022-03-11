@@ -322,3 +322,24 @@ TEST(TVector, cant_multiply_vectors_with_not_equal_size)
 	TVector<int> c(3,2), d(2,2);
 	ASSERT_ANY_THROW(c * d);
 }
+
+TEST(TVector, can_enter_vector) {
+	TVector<int> a(3), b(3);
+	b[0] = 1;
+	b[1] = 2;
+	b[2] = 3;
+	stringstream s("1 2 3");
+	ASSERT_NO_THROW(s >> a);
+	EXPECT_EQ(a,b);
+}
+
+TEST(TVector, can_print_vector) {
+	TVector<int> a(3);
+	a[0] = 1;
+	a[1] = 2;
+	a[2] = 3;
+	stringstream s1;
+	string s2 = "1 2 3 ";
+	ASSERT_NO_THROW(s1 << a);
+	EXPECT_EQ(s1.str(), s2);
+}
